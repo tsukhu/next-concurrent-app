@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import Layout from '../components/Layout';
 import NavBar from '../components/Navbar';
 import Spinner from '../components/Spinner';
@@ -29,9 +30,11 @@ function Content() {
           </Suspense>
           <section className="comments">
             <h2>Comments</h2>
-            <Suspense fallback={<Spinner />}>
-              <Comments />
-            </Suspense>
+            <ErrorBoundary FallbackComponent={CommentsError}>
+              <Suspense fallback={<Spinner />}>
+                <Comments />
+              </Suspense>
+            </ErrorBoundary>
           </section>
           <h2>Thanks for reading!</h2>
         </article>
@@ -40,13 +43,8 @@ function Content() {
   );
 }
 
-function Error({ error }: { error: Error }) {
-  return (
-    <div>
-      <h1>Application Error</h1>
-      <pre style={{ whiteSpace: 'pre-wrap' }}>{error.stack}</pre>
-    </div>
-  );
+function CommentsError() {
+  return <div>Comments are currently unavailable</div>;
 }
 
 const Home: NextPage = () => {

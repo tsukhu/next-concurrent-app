@@ -20,11 +20,12 @@ export default function Comments() {
   );
   return (
     <>
-      {data.map((comment: any, i: number) => (
-        <p className="comment" key={i}>
-          {comment?.name}
-        </p>
-      ))}
+      {Array.isArray(data) &&
+        data.map((comment: any, i: number) => (
+          <p className="comment" key={i}>
+            {comment?.name}
+          </p>
+        ))}
     </>
   );
 }
