@@ -2,8 +2,6 @@ import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Layout from '../components/Layout';
-import NavBar from '../components/Navbar';
 import Spinner from '../components/Spinner';
 
 const Comments = dynamic(() => import('../components/Comments'), {
@@ -18,28 +16,25 @@ const Post = dynamic(() => import('../components/Post'), {
 
 function Content() {
   return (
-    <Layout>
-      <Suspense fallback={<Spinner />}>
-        <NavBar />
-        <aside className="sidebar">
-          <Sidebar />
-        </aside>
-        <article className="post">
-          <Suspense fallback={<Spinner />}>
-            <Post />
-          </Suspense>
-          <section className="comments">
-            <h2>Comments</h2>
-            <ErrorBoundary FallbackComponent={CommentsError}>
-              <Suspense fallback={<Spinner />}>
-                <Comments />
-              </Suspense>
-            </ErrorBoundary>
-          </section>
-          <h2>Thanks for reading!</h2>
-        </article>
-      </Suspense>
-    </Layout>
+    <Suspense fallback={<Spinner />}>
+      <aside className="sidebar">
+        <Sidebar />
+      </aside>
+      <article className="post">
+        <Suspense fallback={<Spinner />}>
+          <Post />
+        </Suspense>
+        <section className="comments">
+          <h2>Comments</h2>
+          <ErrorBoundary FallbackComponent={CommentsError}>
+            <Suspense fallback={<Spinner />}>
+              <Comments />
+            </Suspense>
+          </ErrorBoundary>
+        </section>
+        <h2>Thanks for reading!</h2>
+      </article>
+    </Suspense>
   );
 }
 

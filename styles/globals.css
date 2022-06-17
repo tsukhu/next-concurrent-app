@@ -8,6 +8,27 @@ body {
 
 nav {
   padding: 20px;
+  background-color: rgb(221, 216, 216);
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  text-transform: capitalize;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: all 0.05s ease-in-out;
+}
+
+nav a.active {
+  color: rgb(66, 50, 122);
+  font-weight: 700;
+}
+
+nav a:hover {
+  color: rgb(66, 50, 122);
 }
 
 .sidebar {
