@@ -1,18 +1,21 @@
 .app {
-  width: 30rem;
-  margin: 2rem auto;
   text-align: center;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
 }
 
 .input {
   font: inherit;
+  margin: 1rem;
   padding: 0.25rem;
-  font-size: 1.25rem;
   border-radius: 6px;
   border: 1px solid #ccc;
-  width: 50%;
 }
 
 .input:focus {
-  background-color: #f2e0ff;
+  background-color: #d9c0fa;
 }

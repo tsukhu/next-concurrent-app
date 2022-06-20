@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import styles from '../styles/sideBar.module.css';
 const fetcher = async (
   input: RequestInfo,
   init: RequestInit,
@@ -14,13 +15,15 @@ export default function Sidebar() {
     { suspense: true }
   );
   return (
-    <>
+    <div className={styles.sideBar}>
       <h1>Users</h1>
-      <ul>
+      <ul className={styles.ul}>
         {data.map((user: any, i: number) => (
-          <li key={i}>{user?.name}</li>
+          <li key={i} className={styles.li}>
+            {user?.name}
+          </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

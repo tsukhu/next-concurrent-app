@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { useDeferredValue, useState } from 'react';
+import { useState } from 'react';
 import generateProducts from '../data/generateProducts';
-import styles from '../styles/deferredValue.module.css';
+import styles from '../styles/productList.module.css';
 
 const dummyProducts = generateProducts();
 function ProductList({ filterText }: { filterText: string }) {
@@ -20,13 +20,13 @@ function ProductList({ filterText }: { filterText: string }) {
   }, [getfilterProducts, filterText]);
 
   return (
-    <ul className={styles.ul}>
+    <div className={styles.basicGrid}>
       {filteredProducts.map((product, i) => (
-        <li key={i} className={styles.li}>
+        <div key={i} className={styles.card}>
           {product}
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 

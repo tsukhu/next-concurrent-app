@@ -1,13 +1,35 @@
-.ul {
-  list-style: none;
-  margin: 2rem;
-  padding: 0;
+.basicGrid {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
-.li {
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 1rem 0;
   padding: 1rem;
-  background-color: #ddb0eb;
+  background-color: #d9c0fa;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  transition: all 500ms;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.card:hover {
+  box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em,
+    rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+  transform: translateY(-3px) scale(1.1);
 }

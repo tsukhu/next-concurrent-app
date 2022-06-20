@@ -1,16 +1,16 @@
 import { useDeferredValue } from 'react';
-import styles from '../styles/deferredValue.module.css';
+import styles from '../styles/productList.module.css';
 
 function ProductList({ products }: { products: string[] }) {
   const deferredProducts = useDeferredValue(products);
   return (
-    <ul className={styles.ul}>
+    <div className={styles.basicGrid}>
       {deferredProducts.map((product, i) => (
-        <li key={i} className={styles.li}>
+        <div key={i} className={styles.card}>
           {product}
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 

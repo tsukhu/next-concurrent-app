@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import styles from '../styles/post.module.css';
 
 const fetcher = async (
   input: RequestInfo,
@@ -20,9 +21,9 @@ export default function Post() {
     { suspense: true }
   );
   return (
-    <>
+    <div className={styles.post}>
       <h1>{data.title}</h1>
       <p>{data.body}</p>
-    </>
+    </div>
   );
 }

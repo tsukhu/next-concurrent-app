@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import styles from '../styles/comments.module.css';
 
 const fetcher = async (
   input: RequestInfo,
@@ -19,13 +20,13 @@ export default function Comments() {
     { suspense: true }
   );
   return (
-    <>
+    <div className={styles.comments}>
       {Array.isArray(data) &&
         data.map((comment: any, i: number) => (
-          <p className="comment" key={i}>
+          <p className={styles.comment} key={i}>
             {comment?.name}
           </p>
         ))}
-    </>
+    </div>
   );
 }

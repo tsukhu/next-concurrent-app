@@ -1,5 +1,6 @@
 import { useState, useTransition } from 'react';
 import ProductList from '../components/ProductListWithoutDeferred';
+import Spinner from '../components/Spinner';
 import styles from '../styles/deferredValue.module.css';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         onChange={updateFilterHandler}
         className={styles.input}
       />
-      {isPending && <p>Updating List...</p>}
+      <Spinner active={isPending} />
       <ProductList filterText={filterTerm} />
     </div>
   );
