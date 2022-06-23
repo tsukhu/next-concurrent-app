@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.inputSection {
+  display: flex;
+}
+
 .input {
   font: inherit;
   margin: 1rem;

@@ -5,8 +5,6 @@ import styles from '../styles/productList.module.css';
 
 const dummyProducts = generateProducts();
 function ProductList({ filterText }: { filterText: string }) {
-  const [filteredProducts, setFilteredProducts] = useState<string[]>([]);
-
   const getfilterProducts = useCallback((filterTerm: string): string[] => {
     if (!filterTerm) {
       return dummyProducts;
@@ -14,9 +12,9 @@ function ProductList({ filterText }: { filterText: string }) {
     return dummyProducts.filter((product) => product.includes(filterTerm));
   }, []);
 
-  React.useEffect(() => {
+  const filteredProducts = React.useMemo(() => {
     const newProductList: string[] = getfilterProducts(filterText);
-    setFilteredProducts(newProductList);
+    return newProductList;
   }, [getfilterProducts, filterText]);
 
   return (
