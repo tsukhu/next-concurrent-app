@@ -2,6 +2,9 @@ import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { CommentsSkeleton } from '../components/CommentsSkeleton';
+import { PostSkeleton } from '../components/PostSkeleton';
+import { SidebarSkeleton } from '../components/SideBarSkeleton';
 import Spinner from '../components/Spinner';
 
 const Comments = dynamic(() => import('../components/Comments'), {
@@ -16,18 +19,18 @@ const Post = dynamic(() => import('../components/Post'), {
 
 function Content() {
   return (
-    <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<SidebarSkeleton />}>
       <aside className="sidebar">
         <Sidebar />
       </aside>
       <article className="post">
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<PostSkeleton />}>
           <Post />
         </Suspense>
         <section className="comments">
           <h2>Comments</h2>
           <ErrorBoundary FallbackComponent={CommentsError}>
-            <Suspense fallback={<Spinner />}>
+            <Suspense fallback={<CommentsSkeleton />}>
               <Comments />
             </Suspense>
           </ErrorBoundary>

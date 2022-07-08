@@ -9,6 +9,17 @@
   overflow-y: auto;
 }
 
+.commentsskeleton {
+  margin-top: 1rem;
+  overflow-y: auto;
+  height: calc(100vh - 500px);
+  padding: 20px;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+  overflow-y: auto;
+}
+
 .comment {
   border: 2px solid #aaa;
   border-radius: 4px;
